@@ -1,0 +1,21 @@
+#homepage-bg-box {
+    height: 85vh;
+    box-sizing: unset;
+}
+#homepage-bg-img {
+    height: inherit;
+    width: 100%;
+}
+
+#about-us {
+    text-align: center;
+}
+
+#login-form {
+    text-align: center;
+    margin: 10%;
+}
+
+.login-input-label {
+  color: gray;
+}
