@@ -192,6 +192,82 @@ class sectionClass
         $conn=$this->dbDisconnect();
         return $searchResult;
     }
+
+    function getAllClassByStudent($studentID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudentClassGroup;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT class_id from ".$dbname.".".$tbstudentClassGroup." where student_id = $studentID ";
+        try
+        {
+            $allClasses=$conn->prepare($query);
+            $allClasses->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $allClasses;
+    }
+
+    function getAllMeetingsByClassAndGroup($classID, $groupID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbmeeting;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT meeting_id from ".$dbname.".".$tbmeeting." where class_id = $classID and group_id = $groupID ";
+        try
+        {
+            $allMeetings=$conn->prepare($query);
+            $allMeetings->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $allMeetings;
+    }
+
+    function getClassTime($classID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbclass;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT day, start, end from ".$dbname.".".$tbclass." where class_id = $classID";
+        try
+        {
+            $classTime=$conn->prepare($query);
+            $classTime->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $classTime;
+    }
+
+    function getMeetingTime($meetingID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbmeeting;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT day, start, end from ".$dbname.".".$tbmeeting." where meeting_id = $meetingID";
+        try
+        {
+            $meetingTime=$conn->prepare($query);
+            $meetingTime->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $meetingTime;
+    }
 }
 
 ?>

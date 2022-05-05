@@ -1,0 +1,5 @@
+<?php
+
+$sectionObj=new sectionClass();
+
+
