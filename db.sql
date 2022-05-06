@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 05/05/2022 21:32:18
+ Date: 07/05/2022 01:36:21
 */
 
 SET NAMES utf8mb4;
@@ -47,7 +47,6 @@ DROP TABLE IF EXISTS `meeting`;
 CREATE TABLE `meeting` (
   `meeting_id` int NOT NULL AUTO_INCREMENT,
   `group_id` int NOT NULL,
-  `class_id` int NOT NULL,
   `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') NOT NULL,
   `start` time NOT NULL,
   `end` time NOT NULL,
@@ -60,8 +59,8 @@ CREATE TABLE `meeting` (
 -- Records of meeting
 -- ----------------------------
 BEGIN;
-INSERT INTO `meeting` (`meeting_id`, `group_id`, `class_id`, `day`, `start`, `end`, `room`) VALUES (1, 1, 0, 'Tuesday', '10:00:00', '12:00:00', 'Room 1');
-INSERT INTO `meeting` (`meeting_id`, `group_id`, `class_id`, `day`, `start`, `end`, `room`) VALUES (2, 23, 0, 'Saturday', '12:00:00', '15:00:00', 'Room 5');
+INSERT INTO `meeting` (`meeting_id`, `group_id`, `day`, `start`, `end`, `room`) VALUES (1, 1, 'Tuesday', '10:00:00', '12:00:00', 'Room 1');
+INSERT INTO `meeting` (`meeting_id`, `group_id`, `day`, `start`, `end`, `room`) VALUES (2, 23, 'Saturday', '12:00:00', '15:00:00', 'Room 5');
 COMMIT;
 
 -- ----------------------------
@@ -90,24 +89,6 @@ BEGIN;
 INSERT INTO `student` (`student_id`, `given_name`, `family_name`, `group_id`, `title`, `campus`, `phone`, `email`, `photo`, `category`) VALUES (1, 'Nadine', 'Baadarani', 1, 'Ms', 'Hobart', '0493423101', 'nadineb2@utas.edu.au', 'student_1.png', 'Masters');
 INSERT INTO `student` (`student_id`, `given_name`, `family_name`, `group_id`, `title`, `campus`, `phone`, `email`, `photo`, `category`) VALUES (2, 'Bachelor', 'User', 1, 'Ms', 'Hobart', '0493423101', 'bachelor@utas.edu', 'student_2.jpeg', 'Bachelors');
 INSERT INTO `student` (`student_id`, `given_name`, `family_name`, `group_id`, `title`, `campus`, `phone`, `email`, `photo`, `category`) VALUES (3, 'Jesse', 'He', 1, 'mr', 'Hobart', '04111111', 'abc@utas.edu', '', 'Masters');
-COMMIT;
-
--- ----------------------------
--- Table structure for studentClassGroup
--- ----------------------------
-DROP TABLE IF EXISTS `studentClassGroup`;
-CREATE TABLE `studentClassGroup` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `student_id` int NOT NULL,
-  `class_id` int NOT NULL,
-  `group_id` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of studentClassGroup
--- ----------------------------
-BEGIN;
 COMMIT;
 
 -- ----------------------------
