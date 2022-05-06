@@ -305,6 +305,25 @@ class sectionClass
         return $allMeetings;
     }
 
+    function getAllStudentsByGroupID($groupID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudent;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT * from ".$dbname.".".$tbstudent." where group_id = $groupID ";
+        try
+        {
+            $allStudents=$conn->prepare($query);
+            $allStudents->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $allStudents;
+    }
+
     function getClassTime($classID) {
         global $dbhost,$dbname,$dbuname,$dbpassword,$tbclass;
         $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
