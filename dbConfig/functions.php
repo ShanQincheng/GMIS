@@ -267,6 +267,25 @@ class sectionClass
         return $allClasses;
     }
 
+    function getAllClassByGroupID($groupID) {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbclass;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT * from ".$dbname.".".$tbclass." where group_id = $groupID ";
+        try
+        {
+            $allClasses=$conn->prepare($query);
+            $allClasses->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $this->dbDisconnect();
+        return $allClasses;
+    }
+
     function getAllMeetingsByClassAndGroup($classID, $groupID) {
         global $dbhost,$dbname,$dbuname,$dbpassword,$tbmeeting;
         $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
