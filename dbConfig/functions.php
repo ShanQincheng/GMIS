@@ -77,6 +77,61 @@ class sectionClass
         }
     }
 
+    function loginHardCode($email,$password) {
+        $userCredentials = array(
+            "nadineb2@utas.edu.au" => "8f5c853566391602f1a56b305e1d9cd5",
+            "bachelor@utas.edu" => "c2b7dae3df98550763dfaa494e550aeb",
+        );
+        $password=md5($password);
+
+        if (!array_key_exists($email, $userCredentials)) {
+            return  0;
+        }
+
+        $correctPassword = $userCredentials[$email];
+        if ($password !== $correctPassword) {
+            return 0;
+        }
+
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbuserAccess,$tbstudent;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+
+        $query="SELECT * FROM ".$dbname.".".$tbstudent." where email=:email";
+        try
+        {
+            $login=$conn->prepare($query);
+            $login->bindParam(":email",$email);
+            $login->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit;
+        }
+        $count = $login->rowCount();
+        if($count==1)
+        {
+            $row=$login->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['student_id']=$row['student_id'];
+            $_SESSION['given_name']=$row['given_name'];
+            $_SESSION['family_name']=$row['family_name'];
+            $_SESSION['group_id']=$row['group_id'];
+            $_SESSION['title']=$row['title'];
+            $_SESSION['campus']=$row['campus'];
+            $_SESSION['phone']=$row['phone'];
+            $_SESSION['email']=$row['email'];
+            $_SESSION['photo']=$row['photo'];
+            $_SESSION['category']=$row['category'];
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+
+    }
+
     function getAllStudents()
     {
         global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudent;
