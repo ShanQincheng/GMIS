@@ -286,11 +286,11 @@ class sectionClass
         return $allClasses;
     }
 
-    function getAllMeetingsByClassAndGroup($classID, $groupID) {
+    function getAllMeetingsByGroupID($groupID) {
         global $dbhost,$dbname,$dbuname,$dbpassword,$tbmeeting;
         $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
 
-        $query="SELECT meeting_id from ".$dbname.".".$tbmeeting." where class_id = $classID and group_id = $groupID ";
+        $query="SELECT * from ".$dbname.".".$tbmeeting." where group_id = $groupID ";
         try
         {
             $allMeetings=$conn->prepare($query);

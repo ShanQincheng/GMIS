@@ -212,7 +212,7 @@ if(isset($_POST['searchText'],$_POST['operation']))
                         <td><a href='mailto:".$row['email']."'>".$row['email']."</a></td>
                         <td>".$row['category']."</td>
                         <td><a href='?viewAll=classes&groupID=$groupID'>View All</a></td>
-                        <td><a href='?viewAll=meetings'>View All</a></td>
+                        <td><a href='?viewAll=meetings&groupID=$groupID'>View All</a></td>
                         </tr>";
                     }
                 ?>
@@ -257,6 +257,44 @@ if(isset($_GET["viewAll"]) and $_GET["viewAll"] == "classes")
     echo"
                         </tbody>
                     </table>";
+}
+?>
+
+<?php
+if(isset($_GET["viewAll"]) and $_GET["viewAll"] == "meetings")
+{
+    $groupID = $_GET["groupID"];
+    $allMeetings=$sectionObj->getAllMeetingsByGroupID($groupID);
+
+    echo "
+          <table>
+            <thead>
+                <tr>
+                    <th>Meeting ID</th>
+                    <th>Group ID</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Room</th>
+                </tr>
+            </thead>
+            <tbody>";
+
+    while($row=$allMeetings->fetch(PDO::FETCH_ASSOC))
+    {
+        echo "
+            <tr>
+                        <td>".$row['meeting_id']."</td>
+                        <td>".$row['group_id']."</td>
+                        <td>".$row['day']."</td>
+                        <td>".$row['start']."</td>
+                        <td>".$row['end']."</td>
+                        <td>".$row['room']."</td>
+                        </tr>";
+    }
+           echo"  
+            </tbody>
+        </table>";
 }
 ?>
 
