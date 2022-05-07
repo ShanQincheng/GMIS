@@ -1,2 +1,1 @@
-# GMIS
-KIT506 assignment3
+# KIT506_GMIS

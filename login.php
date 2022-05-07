@@ -9,7 +9,7 @@ $email=$_POST['email'];
 $password=$_POST['password'];
 // echo "EMAIL:".$email."---- PASSWORD:".$password;
 
-$login=$sectionObj->loginHardCode($email,$password);
+$login=$sectionObj->login($email,$password);
 
 if($login==1)
 {
