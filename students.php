@@ -20,15 +20,8 @@ $getAllStudents=$sectionObj->getAllStudents();
     <thead>
         <tr>
             <th>Image</th>
-            <th>Student ID</th>
             <th>Given Name</th>
             <th>Family Name</th>
-            <th>Group ID</th>
-            <th>Title</th>
-            <th>Campus</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Category</th>
         </tr>
     </thead>
     <tbody>
@@ -38,15 +31,8 @@ $getAllStudents=$sectionObj->getAllStudents();
                 echo "
                 <tr>
                 <td><img src='data:image/jpeg;base64,".base64_encode($row['photo'])."' style='width:30px'></td>
-                <td>".$row['student_id']."</td>
                 <td>".$row['given_name']."</td>
                 <td>".$row['family_name']."</td>
-                <td>".$row['group_id']."</td>
-                <td>".$row['title']."</td>
-                <td>".$row['campus']."</td>
-                <td><a href='tel:".$row['phone']."'>".$row['phone']."</a></td>
-                <td><a href='mailto:".$row['email']."'>".$row['email']."</a></td>
-                <td>".$row['category']."</td>
                 </tr>";
             }
         ?>
