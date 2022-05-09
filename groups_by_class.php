@@ -8,27 +8,10 @@ error_reporting(E_ALL);
 
 $viewGroupsbyClass=$sectionObj->viewGroupsbyClass($_GET['id']);
 ?>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-  margin-left:5%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-<div style="height: 10px;"></div>
+<div class="visual-space"></div>
 <a href="search.php?search=classes&searchTxt=<?php echo $_GET['searchText']; ?>">Go back</a>
-<h2 style="margin-left:5%">View All Groups for Class <?php echo $_GET['id']; ?></h2>
+<h2 class="page-label">View All Groups for Class <?php echo $_GET['id']; ?></h2>
 
 
 <table>

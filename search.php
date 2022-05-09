@@ -21,50 +21,14 @@ if(isset($_GET['searchTxt'],$_GET['search']))
     $operation=$_GET['search'];
     $searchText=$_GET['searchTxt'];
 }
-
 ?>
 
-<div style="height: 10px;"></div>
-<h2 style="margin-left:5%">Search</h2>
-<style>
-input[type=text],select {
-  width: 15%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+    <link rel="stylesheet" type="text/css" href="css/search-page.css">
+<div class="visual-space"></div>
+<h2 class="page-label">Search</h2>
 
-button {
-  background-color: black;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 10%;
-}
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-  margin-left:5%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
 <form name="search" method="post" action="search.php">
-    <input type="text" style="margin-left:5%" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
+    <input id="search-input" type="text" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
     <select name="operation" required>
         <?php
         $classes='';$groups='';$meetings='';$students='';
@@ -92,7 +56,7 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
     if($operation=='classes')
     {
         ?>
-        <h4 style="margin-left:5%">View Classes having search criteria: <?php echo $searchText; ?></h4>
+        <h4 class="page-label">View Classes having search criteria: <?php echo $searchText; ?></h4>
 
         <table>
             <thead>
@@ -129,7 +93,7 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
     elseif($operation=='groups')
     {
         ?>
-        <h4 style="margin-left:5%">View Groups having search criteria: <?php echo $searchText; ?></h4>
+        <h4 class="page-label">View Groups having search criteria: <?php echo $searchText; ?></h4>
 
         <table>
             <thead>
@@ -158,7 +122,7 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
     elseif($operation=='meetings')
     {
         ?>
-        <h4 style="margin-left:5%">View Meetings having search criteria: <?php echo $searchText; ?></h4>
+        <h4 class="page-label">View Meetings having search criteria: <?php echo $searchText; ?></h4>
 
         <table>
             <thead>
@@ -193,7 +157,7 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
     elseif($operation=='students')
     {
         ?>
-        <h4 style="margin-left:5%">View Students having search criteria: <?php echo $searchText; ?></h4>
+        <h4 class="page-label">View Students having search criteria: <?php echo $searchText; ?></h4>
 
         <table>
             <thead>

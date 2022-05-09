@@ -12,26 +12,9 @@ if(!isset($_SESSION['category']) || $_SESSION['category']!='Masters')
 
 $getAllStudents=$sectionObj->getAllStudents();
 ?>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-  margin-left:5%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-<div style="height: 10px;"></div>
-<h2 style="margin-left:5%">View All Students</h2>
+<div class="visual-space"></div>
+<h2 class="page-label">View All Students</h2>
 
 <table>
     <thead>
@@ -54,7 +37,7 @@ tr:nth-child(even) {
             {
                 echo "
                 <tr>
-                <td><img src='img/student_img/".$row['photo']."' style='width:30px'></td>
+                <td><img src='data:image/jpeg;base64,".base64_encode($row['photo'])."' style='width:30px'></td>
                 <td>".$row['student_id']."</td>
                 <td>".$row['given_name']."</td>
                 <td>".$row['family_name']."</td>

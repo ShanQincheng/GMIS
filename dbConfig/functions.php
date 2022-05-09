@@ -37,43 +37,31 @@ class sectionClass
 
     function login($email,$password)
     {
-        global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudent;
-        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
-
-        $query="SELECT * FROM ".$dbname.".".$tbstudent."  where email=:email";  
-        try
+        if($email=='nadineb2@utas.edu.au' and $password=='nadine')
         {
-            $login=$conn->prepare($query);
-			$login->bindParam(":email",$email);
-            $login->execute();
+            $_SESSION['student_id']="625157";
+            $_SESSION['given_name']="Nadine";
+            $_SESSION['family_name']="Baadarani";
+            $_SESSION['group_id']="23";
+            $_SESSION['title']="Mrs";
+            $_SESSION['campus']="Hobart";
+            $_SESSION['phone']="0493423101";
+            $_SESSION['email']="nadineb2@utas.edu.au";
+            $_SESSION['category']="Masters";
+            return 1;
         }
-        catch(PDOException $e)
+        elseif($email=='zhe4@utas.edu.au' and $password=='zhe4')
         {
-            print($e->getMessage());
-            exit;
-        }      
-        $count = $login->rowCount();
-        if($count==1)
-        {
-            if(($email=='nadineb2@utas.edu.au' and $password=='nadine') or ($email=='bachelor@utas.edu' and $password=='bachelor'))
-            {
-                $row=$login->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['student_id']=$row['student_id'];
-                $_SESSION['given_name']=$row['given_name'];
-                $_SESSION['family_name']=$row['family_name'];
-                $_SESSION['group_id']=$row['group_id'];
-                $_SESSION['title']=$row['title'];
-                $_SESSION['campus']=$row['campus'];
-                $_SESSION['phone']=$row['phone'];
-                $_SESSION['email']=$row['email'];
-                $_SESSION['photo']=$row['photo'];
-                $_SESSION['category']=$row['category'];
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
+            $_SESSION['student_id']="123456";
+            $_SESSION['given_name']="Zhenglin";
+            $_SESSION['family_name']="He";
+            $_SESSION['group_id']="23";
+            $_SESSION['title']="Mr";
+            $_SESSION['campus']="Hobart";
+            $_SESSION['phone']="0493423101";
+            $_SESSION['email']="zhe4@utas.edu.au";
+            $_SESSION['category']="Bachelors";
+            return 1; 
         }
         else
         {
@@ -203,6 +191,7 @@ class sectionClass
         $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
 
         $query="SELECT A.*,B.given_name, B.family_name from ".$dbname.".".$tbclass." A, ".$dbname.".".$tbstudent." B where B.group_id=A.group_id and B.student_id=:studentId order by class_id ";
+        // echo $query;exit;
         try
         {
             $viewClassesByStudent=$conn->prepare($query);
@@ -216,6 +205,28 @@ class sectionClass
         }
         $conn=$this->dbDisconnect();
         return $viewClassesByStudent;
+    }
+
+    function getStudentDetails($student_id)
+    {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudent;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT given_name, family_name from ".$dbname.".".$tbstudent." where student_id=:studentId ";
+        // echo $query;exit;
+        try
+        {
+            $getStudentDetails=$conn->prepare($query);
+            $getStudentDetails->bindParam(":studentId",$student_id);
+            $getStudentDetails->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $conn=$this->dbDisconnect();
+        return $getStudentDetails;
     }
 
     function viewMeetingsByStudent($student_id)

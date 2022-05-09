@@ -1,3 +1,23 @@
+.login-input-label {
+    color: gray;
+}
+
+.visual-space {
+    height: 10px;
+}
+
+.page-label {
+    margin-left:5%;
+}
+
+#search-input {
+    margin-left:5%;
+}
+
+#student-img {
+    width:30px;
+}
+
 #homepage-bg-box {
     height: 85vh;
     box-sizing: unset;
@@ -16,6 +36,20 @@
     margin: 10%;
 }
 
-.login-input-label {
-  color: gray;
+#header-nav-bar {
+    background-color:black;
+}
+
+#header-tail-space {
+    height: 15px;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    color: black;
+    text-align: center;
 }

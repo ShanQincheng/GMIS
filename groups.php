@@ -12,26 +12,9 @@ if(!isset($_SESSION['category']) || $_SESSION['category']!='Masters')
 
 $getAllGroups=$sectionObj->getAllGroups();
 ?>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 50%;
-  margin-left:5%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-<div style="height: 10px;"></div>
-<h2 style="margin-left:5%">View All Groups</h2>
+<div class="visual-space"></div>
+<h2 class="page-label">View All Groups</h2>
 
 <table>
     <thead>
