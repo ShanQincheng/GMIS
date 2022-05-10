@@ -23,7 +23,7 @@ if(isset($_GET['searchTxt'],$_GET['search']))
 }
 ?>
 
-    <link rel="stylesheet" type="text/css" href="css/search-page.css">
+    <link rel="stylesheet" type="text/css" href="css/search-page.css?version=2">
 <div class="visual-space"></div>
 <h2 class="page-label">Search</h2>
 
