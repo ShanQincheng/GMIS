@@ -185,6 +185,30 @@ class sectionClass
         return $searchResult;
     }
 
+    function searchStudent($searchStudentID,$searchStudentGN,$searchStudentFN)
+    {
+        global $dbhost,$dbname,$dbuname,$dbpassword,$tbstudent;
+        $conn=$this->dbConnect($dbhost,$dbuname,$dbpassword,$dbname);
+
+        $query="SELECT * from ".$dbname.".".$tbstudent." where student_id =:studentID AND given_name = :givenName AND family_name = :familyName ";
+
+        try
+        {
+            $searchStudent=$conn->prepare($query);
+            $searchStudent->bindParam(":studentID", $searchStudentID);
+            $searchStudent->bindParam(":givenName", $searchStudentGN);
+            $searchStudent->bindParam(":familyName", $searchStudentFN);
+            $searchStudent->execute();
+        }
+        catch(PDOException $e)
+        {
+            print($e->getMessage());
+            exit();
+        }
+        $conn=$this->dbDisconnect();
+        return $searchStudent;
+    }
+
     function viewClassesByStudent($student_id)
     {
         global $dbhost,$dbname,$dbuname,$dbpassword,$tbclass,$tbstudent;

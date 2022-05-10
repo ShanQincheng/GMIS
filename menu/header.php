@@ -32,10 +32,12 @@
                         <li><a class="dropdown-item" href="classes.php" <?php if($page=='classes') echo 'class="active"'; ?>>Classes</a></li>
                         <li><a class="dropdown-item" href="meetings.php" <?php if($page=='meetings') echo 'class="active"'; ?> >Meetings</a></li>
                         <li><a class="dropdown-item" href="search.php" <?php if($page=='search') echo 'class="active"'; ?>>Search</a></li>
+                        <li><a class="dropdown-item" href="search-student-privacy.php" <?php if($page=='search-student-privacy') echo 'class="active"'; ?>>Student Details Search</a></li>
                         <?php }
                         elseif($sectionObj->isLoggedIn()==1 and $_SESSION['category']=='Bachelors')
                          { ?> 
                         <li><a class="dropdown-item" href="search.php" <?php if($page=='search') echo 'class="active"'; ?>>Search</a></li>
+                        <li><a class="dropdown-item" href="search-student-privacy.php" <?php if($page=='search-student-privacy') echo 'class="active"'; ?>>Student Details Search</a></li>
                         <?php }
                         ?>
                     </ul>&nbsp;

@@ -28,7 +28,7 @@ if(isset($_GET['searchTxt'],$_GET['search']))
 <h2 class="page-label">Search</h2>
 
 <form name="search" method="post" action="search.php">
-    <input id="search-input" type="text" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
+    <input class="search-input" type="text" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
     <select name="operation" required>
         <?php
         $classes='';$groups='';$meetings='';$students='';
