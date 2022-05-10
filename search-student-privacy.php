@@ -17,6 +17,14 @@ if(isset($_POST['searchStudentID'],$_POST['searchStudentGN'],$_POST['searchStude
     $searchStudentGN=$_POST['searchStudentGN'];
     $searchStudentFN=$_POST['searchStudentFN'];
 }
+if(isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentFN']))
+{
+    $search=$sectionObj->searchStudent($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentFN']);
+
+    $searchStudentID=$_GET['searchStudentID'];
+    $searchStudentGN=$_GET['searchStudentGN'];
+    $searchStudentFN=$_GET['searchStudentFN'];
+}
 
 ?>
 
@@ -45,7 +53,7 @@ if(isset($_POST['searchStudentID'],$_POST['searchStudentGN'],$_POST['searchStude
             ?> <?php if(isset($_POST['searchStudentFN']))
                 echo "value='".$_POST['searchStudentFN']."'";
             ?>required>
-        <button type="submit" name="submit" value="Submit">Submit</button>
+        <button type="submit" class="black-button" name="submit" value="Submit">Submit</button>
     </form>
 
 <?php

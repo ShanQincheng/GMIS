@@ -12,7 +12,7 @@ $row1=$getStudentDetails->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <div class="visual-space"></div>
-<a href="search.php?search=students&searchTxt=<?php echo $_GET['searchText']; ?>">Go back</a>
+<button type="submit" class="black-button"><a class="white-link" href="search-student-privacy.php?search=students&searchStudentID=<?php echo $_GET['searchStudentID']; ?>&searchStudentGN=<?php echo $_GET['searchStudentGN']; ?>&searchStudentFN=<?php echo $_GET['searchStudentFN']; ?>">Go back</a></button>
 <h2 class="page-label">View All Meetings for Student:</h2>
 <h4 class="page-label">ID: <?php echo $_GET['id']; ?></h4>
 <h4 class="page-label">Name: <?php echo $row1['given_name']." ".$row1['family_name']; ?></h4>

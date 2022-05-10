@@ -45,7 +45,7 @@ if(isset($_GET['searchTxt'],$_GET['search']))
         <option value="groups" <?php echo $groups; ?>>Groups</option>
         <option value="meetings" <?php echo $meetings; ?>>Meetings</option>
     </select>
-    <button type="submit" name="submit" value="Submit">Submit</button>
+    <button type="submit" class="black-button" name="submit" value="Submit">Submit</button>
 </form>
 
 <?php
