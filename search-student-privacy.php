@@ -61,10 +61,10 @@ if(isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentF
 if(isset($_POST['searchStudentID'],$_POST['searchStudentGN'],$_POST['searchStudentFN'])
     || isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentFN'])) {
     ?>
-    <h4 class="page-label">View Students having search criteria:
-        <?php echo "StudentID: " .$searchStudentID.
-                    " Given Name: " .$searchStudentGN.
-                    " Family Name: " .$searchStudentFN; ?>
+    <h4 class="page-label">View Students having search criteria: <br/>
+        <?php echo "<h5 class='page-label'>StudentID: " .$searchStudentID. "<br/></h5>".
+                    "<h5 class='page-label'> Given Name: " .$searchStudentGN.  "<br/></h5>".
+                    "<h5 class='page-label'> Family Name: " .$searchStudentFN; "</h3>" ?>
     </h4>
 
     <table>
