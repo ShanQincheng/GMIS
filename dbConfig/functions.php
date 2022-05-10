@@ -168,7 +168,7 @@ class sectionClass
         }
         elseif($operation=='students')
         {
-            $query="SELECT * from ".$dbname.".".$tbstudent." where student_id LIKE '%".$searchText."%' OR given_name LIKE '%".$searchText."%' OR family_name LIKE '%".$searchText."%' OR group_id LIKE '%".$searchText."%' OR title LIKE '%".$searchText."%' OR campus LIKE '%".$searchText."%' OR phone LIKE '%".$searchText."%' OR email LIKE '%".$searchText."%' OR category LIKE '%".$searchText."%' "; 
+            $query="SELECT * from ".$dbname.".".$tbstudent." where student_id LIKE '%".$searchText."%' OR given_name LIKE '%".$searchText."%' OR family_name LIKE '%".$searchText."%' "; 
         }
 
         try
