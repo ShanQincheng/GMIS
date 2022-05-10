@@ -58,8 +58,8 @@ if(isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentF
     </form>
 
 <?php
-if(isset($_POST['searchStudentID'],$_POST['searchStudentGN'],$_POST['searchStudentFN']))
-{
+if(isset($_POST['searchStudentID'],$_POST['searchStudentGN'],$_POST['searchStudentFN'])
+    || isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentFN'])) {
     ?>
     <h4 class="page-label">View Students having search criteria:
         <?php echo "StudentID: " .$searchStudentID.
