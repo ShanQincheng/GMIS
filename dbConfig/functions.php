@@ -156,15 +156,15 @@ class sectionClass
 
         if($operation=='meetings')
         {
-            $query="SELECT * from ".$dbname.".".$tbmeeting." where meeting_id LIKE '%".$searchText."%' OR group_id LIKE '%".$searchText."%' OR day LIKE '%".$searchText."%' OR start LIKE '%".$searchText."%' OR end LIKE '%".$searchText."%' OR room LIKE '%".$searchText."%' "; 
+            $query="SELECT * from ".$dbname.".".$tbmeeting." where meeting_id LIKE '%".$searchText."%' "; 
         }
         elseif($operation=='groups')
         {
-            $query="SELECT * from ".$dbname.".".$tbstudentGroup." where group_id LIKE '%".$searchText."%' OR group_name LIKE '%".$searchText."%' "; 
+            $query="SELECT * from ".$dbname.".".$tbstudentGroup." where group_id LIKE '%".$searchText."%' "; 
         }
         elseif($operation=='classes')
         {
-            $query="SELECT * from ".$dbname.".".$tbclass." where class_id LIKE '%".$searchText."%' OR group_id LIKE '%".$searchText."%' OR day LIKE '%".$searchText."%' OR start LIKE '%".$searchText."%' OR end LIKE '%".$searchText."%' OR room LIKE '%".$searchText."%' "; 
+            $query="SELECT * from ".$dbname.".".$tbclass." where class_id LIKE '%".$searchText."%' "; 
         }
         elseif($operation=='students')
         {
