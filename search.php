@@ -39,13 +39,11 @@ if(isset($_GET['searchTxt'],$_GET['search']))
         if(isset($_GET['search']) and $_GET['search']=='classes') $classes='selected';
         if(isset($_GET['search']) and $_GET['search']=='groups') $groups='selected';
         if(isset($_GET['search']) and $_GET['search']=='meetings') $meetings='selected';
-        if(isset($_GET['search']) and $_GET['search']=='students') $students='selected';
         ?>
         <option value="" >Select an operation..</option>
         <option value="classes" <?php echo $classes; ?>>Classes</option>
         <option value="groups" <?php echo $groups; ?>>Groups</option>
         <option value="meetings" <?php echo $meetings; ?>>Meetings</option>
-        <option value="students" <?php echo $students; ?>>Students</option>
     </select>
     <button type="submit" name="submit" value="Submit">Submit</button>
 </form>
@@ -153,50 +151,6 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
             </tbody>
         </table>
         <?php   
-    }
-    elseif($operation=='students')
-    {
-        ?>
-        <h4 class="page-label">View Students having search criteria: <?php echo $searchText; ?></h4>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Student ID</th>
-                    <th>Given Name</th>
-                    <th>Family Name</th>
-                    <th>Group ID</th>
-                    <th>Title</th>
-                    <th>Campus</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Category</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    while($row=$search->fetch(PDO::FETCH_ASSOC))
-                    {
-                        echo "
-                        <tr>
-                        <td>".$row['student_id']."</td>
-                        <td>".$row['given_name']."</td>
-                        <td>".$row['family_name']."</td>
-                        <td>".$row['group_id']."</td>
-                        <td>".$row['title']."</td>
-                        <td>".$row['campus']."</td>
-                        <td><a href='tel:".$row['phone']."'>".$row['phone']."</a></td>
-                        <td><a href='mailto:".$row['email']."'>".$row['email']."</a></td>
-                        <td>".$row['category']."</td>
-                        <td><a class='dropdown-item' href='classes_by_student.php?id=".$row['student_id']."&searchText=".$searchText."'>View All Classes</a>
-                        <a class='dropdown-item' href='meetings_by_student.php?id=".$row['student_id']."&searchText=".$searchText."'>View All Meetings</a></td>
-                        </tr>";
-                    }
-                ?>
-            </tbody>
-        </table>
-        <?php
     }
 }
 ?>
