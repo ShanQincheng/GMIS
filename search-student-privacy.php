@@ -34,6 +34,7 @@ if(isset($_GET['searchStudentID'],$_GET['searchStudentGN'],$_GET['searchStudentF
 
     <form name="search" method="post" action="search-student-privacy.php">
         <input class="search-input" type="text" placeholder="Student ID" name="searchStudentID"
+               pattern="\d{6}" title="Student number has to be 6 digits"
             <?php if(isset($_GET['searchStudentID']))
                 echo "value='".$_GET['searchStudentID']."'";
             ?>
