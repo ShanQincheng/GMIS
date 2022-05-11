@@ -28,8 +28,8 @@ if(isset($_GET['searchTxt'],$_GET['search']))
 <h2 class="page-label">Search</h2>
 
 <form class="page-label" name="search" method="post" action="search.php">
-    <input class="search-input" type="text" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
-    <select name="operation" required>
+    <input id="search-input" class="search-input" type="text" placeholder="Enter Keyword to search.." name="searchText" <?php if(isset($_GET['searchTxt'])) echo "value='".$_GET['searchTxt']."'"; ?> <?php if(isset($_POST['searchText'])) echo "value='".$_POST['searchText']."'"; ?>required>
+    <select name="operation" id="operation-select" required>
         <?php
         $classes='';$groups='';$meetings='';$students='';
         if(isset($_POST['operation']) and $_POST['operation']=='classes') $classes='selected';
@@ -45,7 +45,7 @@ if(isset($_GET['searchTxt'],$_GET['search']))
         <option value="groups" <?php echo $groups; ?>>Groups</option>
         <option value="meetings" <?php echo $meetings; ?>>Meetings</option>
     </select>
-    <button type="submit" class="black-button" name="submit" value="Submit">Submit</button>
+    <button id="search-btn" type="submit" class="black-button" name="submit" value="Submit">Submit</button>
 </form>
 
 <?php
@@ -154,6 +154,25 @@ if(isset($_POST['searchText'],$_POST['operation']) || isset($_GET['search'],$_GE
     }
 }
 ?>
+
+<script type="text/javascript">
+    let selectAttribute = document.getElementById('operation-select');
+    let searchBtn = document.getElementById('search-btn');
+
+    searchBtn.addEventListener('click', function () {
+        if(selectAttribute.value == "classes")
+        {
+            let searchInput = document.getElementById('search-input');
+
+            searchInput.setAttribute("pattern", "\\d{4,10}");
+            searchInput.setAttribute("title", "Student Classes has to be at least 4 digits");
+        } else {
+            let searchInput = document.getElementById('search-input');
+            searchInput.removeAttribute("pattern");
+            searchInput.removeAttribute("title");
+        }
+    })
+</script>
 
 
 <?php
