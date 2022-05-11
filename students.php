@@ -5,7 +5,7 @@ include('menu/header.php');
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
-if(!isset($_SESSION['category']) || $_SESSION['category']!='Masters')
+if(!isset($_SESSION['category']) || ($_SESSION['category']!='Masters' && $_SESSION['category']!='Staff'))
 {
     echo "<script> alert('You are not authorized to see this page!'); location.href='index.php'</script>";
 }

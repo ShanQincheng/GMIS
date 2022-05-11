@@ -63,6 +63,19 @@ class sectionClass
             $_SESSION['category']="Bachelors";
             return 1; 
         }
+        elseif($email=='kwliu@utas.edu.au' and $password=='kwliu')
+        {
+            $_SESSION['student_id']="234567";
+            $_SESSION['given_name']="Kin Wing";
+            $_SESSION['family_name']="Liu";
+            $_SESSION['group_id']="23";
+            $_SESSION['title']="Mr";
+            $_SESSION['campus']="Hobart";
+            $_SESSION['phone']="0493423101";
+            $_SESSION['email']="kwliu@utas.edu.au";
+            $_SESSION['category']="Staff";
+            return 1;
+        }
         else
         {
             return 0;

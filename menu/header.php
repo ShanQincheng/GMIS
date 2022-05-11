@@ -25,7 +25,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark  bg-black" aria-labelledby="menue-left">
                         <li><a class="dropdown-item" href="index.php" >Home</a></li>
                         <?php
-                        if ($sectionObj->isLoggedIn()==1 and $_SESSION['category']=='Masters')
+                        if ($sectionObj->isLoggedIn()==1 && ($_SESSION['category']=='Masters' || $_SESSION['category']=='Staff'))
                         { ?>
                         <li><a class="dropdown-item" href="groups.php" <?php if($page=='groups') echo 'class="active"'; ?>>Groups</a></li>
                         <li><a class="dropdown-item" href="students.php" <?php if($page=='students') echo 'class="active"'; ?>>Students</a></li>
@@ -34,7 +34,7 @@
                         <li><a class="dropdown-item" href="search.php" <?php if($page=='search') echo 'class="active"'; ?>>Search</a></li>
                         <li><a class="dropdown-item" href="search-student-privacy.php" <?php if($page=='search-student-privacy') echo 'class="active"'; ?>>Student Details Search</a></li>
                         <?php }
-                        elseif($sectionObj->isLoggedIn()==1 and $_SESSION['category']=='Bachelors')
+                        elseif($sectionObj->isLoggedIn()==1 && $_SESSION['category']=='Bachelors')
                          { ?> 
                         <li><a class="dropdown-item" href="search.php" <?php if($page=='search') echo 'class="active"'; ?>>Search</a></li>
                         <li><a class="dropdown-item" href="search-student-privacy.php" <?php if($page=='search-student-privacy') echo 'class="active"'; ?>>Student Details Search</a></li>
