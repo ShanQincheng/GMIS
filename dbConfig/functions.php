@@ -160,7 +160,7 @@ class sectionClass
         }
         elseif($operation=='groups')
         {
-            $query="SELECT * from ".$dbname.".".$tbstudentGroup." where group_id LIKE '%".$searchText."%' "; 
+            $query="SELECT * from ".$dbname.".".$tbstudentGroup." where group_id  = ".$searchText." ";
         }
         elseif($operation=='classes')
         {
